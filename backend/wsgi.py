@@ -1,0 +1,5 @@
+from reddit_saved import app
+
+
+if __name__ == '__main__':
+    app.run()
