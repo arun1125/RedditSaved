@@ -7,8 +7,9 @@ function Login(){
     
     
     function LoginReddit(){
-        fetch('http://reddit-saved.us-east-2.elasticbeanstalk.com/login').then(res => res.json()).then(data => window.location.href = data.login_url)
+        fetch('http://127.0.0.1:65010/login').then(res => res.json()).then(data => window.location.href = data.login_url)
     }
+
 
 
     return(

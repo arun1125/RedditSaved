@@ -1,6 +1,6 @@
 from reddit_saved import app, db
 from reddit_saved.reddit_saved import reddit_saved
-from reddit_saved.models import User, Saved
+from reddit_saved.models import userinfo, savedposts
 from uuid import uuid4
 from flask_restful import reqparse
 from flask import url_for, redirect, render_template, request, session, make_response
@@ -23,6 +23,7 @@ def home():
 
 @app.route('/login')
 def login():
+
     rs = reddit_saved()
     auth_url = rs.make_authorization_url()
     text = f'<a href={auth_url}>Authenticate with reddit</a>'
@@ -61,23 +62,38 @@ def check_user(access_token):
     #check if user is in database
     rs = reddit_saved(access_token)
     username = str(rs.reddit.user.me())
-
-    exists = db.session.query(
-        db.session.query(User).filter_by(username=username).exists()
-        ).scalar()
+    
+    exists = db.engine.execute(f"""
+                        SELECT username
+                        FROM redditsaved.userinfo
+                        WHERE username = '{username}'
+                        """).fetchall()
 
     if exists:
-        user = User.query.filter(User.username == username).first()
-        user.access_token = access_token
-        db.session.commit()
+        # user = User.query.filter(User.username == username).first()
+        # user.access_token = access_token
+        # db.session.commit()
+
+        db.engine.execute(f"""
+                        UPDATE redditsaved.userinfo 
+                        SET access_token = '{access_token}'
+                        WHERE username = '{username}' 
+                        """)
+
+
         # return redirect(url_for('homepage',access_token = access_token))
         return redirect(f'http://localhost:3000/Main/{access_token}')
 
     else:
-        user = User(username = username, access_token = access_token)
+        user = userinfo(username = username, access_token = access_token)
         db.session.add(user)
         db.session.commit()
-        return redirect(url_for('getsavedposts', access_token = access_token))
+
+        # db.engine.execute(f"""
+        #                 INSERT INTO redditsaved.userinfo 
+        #                 {user}
+        #                 """)
+        return redirect(url_for('get_saved_posts', access_token = access_token))
         # return redirect(f'/getsavedposts/{access_token}')
 
 
@@ -92,7 +108,7 @@ def get_saved_posts(access_token):
     #     posts_to_update = saved_posts[-num_posts_to_update:]
     #     db.session.add_all(posts_to_update)
     #     db.session.commit()
-
+    print(saved_posts)
     db.session.add_all(saved_posts)
     db.session.commit()
 
@@ -127,7 +143,7 @@ def AddEmail(access_token):
     email = request.get_json()
 
     db.engine.execute(f"""
-                        UPDATE Saved 
+                        UPDATE redditsaved.savedposts 
                         SET email = '{email}'
                         WHERE username = '{username}' 
                         AND email = ''
@@ -161,7 +177,7 @@ def homepage(access_token, n=5):
     username = str(rs.reddit.user.me())
     posts = db.engine.execute(f"""
                             SELECT permalink
-                            FROM Saved
+                            FROM redditsaved.savedposts
                             WHERE username = '{username}'
                             ORDER BY RANDOM()
                             LIMIT {n}

@@ -2,7 +2,7 @@ import praw
 import smtplib, ssl
 import random
 from uuid import uuid4
-from reddit_saved.models import User, Saved
+from reddit_saved.models import userinfo, savedposts
 
 'https://github.com/reddit-archive/reddit/wiki/OAuth2-Python-Example'
 #code flow is the auth I think I want and the redirect URI 
@@ -46,8 +46,9 @@ class reddit_saved:
 
     def get_saved_posts(self, username):
         saved=[]
-        for item in self.reddit.user.me().saved(limit=None):
-            saved_obj = Saved(
+        for i, item in enumerate(self.reddit.user.me().saved(limit=None)):
+            saved_obj = savedposts(
+                id = f'{username}-{i+1}',
                 username = username,
                 email = '',
                 post_id = item.id,

@@ -1,0 +1,10 @@
+Connection details to your database redditsavedinstance
+
+This is the only time you will be able to view this password. Copy and save the password for your reference, otherwise you will need to modify the database to change it. You can use a SQL client application or utility to connect to your database.
+Learn about connecting to your database
+Master username
+reddit_saved
+Master password
+Nani1125?!Copy
+Endpoint
+redditsavedinstance.czbffs62tgvp.us-east-2.rds.amazonaws.comCopy
