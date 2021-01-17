@@ -3,6 +3,7 @@ version: '3.8'
 services:
   backend:
     build: ./backend
+    image: backend
     volumes:
       - ./backend:/usr/src/app
 
@@ -11,7 +12,8 @@ services:
 
 
   client:
-    build: ./client
+    build: /client
+    image: client
     volumes:
       - ./client:/user/src/app
 

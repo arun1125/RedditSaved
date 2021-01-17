@@ -48,10 +48,12 @@ def reddit_callback():
     
     rs = reddit_saved()
     access_token = rs.reddit.auth.authorize(code)
+
     # session['access_token'] = access_token
     #once they login see if they're existing users or not! 
     #so route to the check user function and do the shit there
     #should I send back to the front end with the access token
+
     return redirect(url_for('check_user', access_token = access_token))
     # return redirect(f'/checkuser/{access_token}') 
     
