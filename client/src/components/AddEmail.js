@@ -38,7 +38,7 @@ class AddEmail extends React.Component{
         //https://stackoverflow.com/questions/50193227/basic-react-form-submit-refreshes-entire-page
         const Email = this.state.Email
         const token = Object.values(this.props)[0]
-        fetch(`http://127.0.0.1:65010/AddEmail/${ token }`, {
+        fetch(`http://192.168.99.100:65010/AddEmail/${ token }`, {
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'

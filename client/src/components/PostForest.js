@@ -61,7 +61,7 @@ class PostForest extends React.Component{
     componentDidMount(){
 //https://www.robinwieruch.de/react-fetching-data
         const token = Object.values(this.props)[0]
-        const url = `http://127.0.0.1:65010/homepage/${ token }`
+        const url = `http://192.168.99.100:65010/homepage/${ token }`
 
         
         fetch(url).then(resp => resp.json())

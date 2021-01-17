@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  backend:
+    build: ./backend
+    volumes:
+      - ./backend:/usr/src/app
+
+    ports:
+      - 65010:65010
+
+
+  client:
+    build: ./client
+    volumes:
+      - ./client:/user/src/app
+
+    ports:
+      - 3000:3000
+
+    depends_on: 
+      - "backend"
+
+    environment: 
+    -HOST_URL=http://192.168.99.100:65010
+
+
+  

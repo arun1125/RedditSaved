@@ -19,7 +19,7 @@ def home():
         username = str(rs.reddit.user.me())
         # return redirect(url_for('homepage',access_token = session['access_token']))
         access_token = session['access_token']
-        return redirect(f'http://localhost:3000/Main/{access_token}')
+        return redirect(f'http://192.168.99.100:3000/Main/{access_token}')
 
 @app.route('/login')
 def login():
@@ -69,6 +69,8 @@ def check_user(access_token):
                         WHERE username = '{username}'
                         """).fetchall()
 
+    print(exists)
+
     if exists:
         # user = User.query.filter(User.username == username).first()
         # user.access_token = access_token
@@ -82,7 +84,9 @@ def check_user(access_token):
 
 
         # return redirect(url_for('homepage',access_token = access_token))
-        return redirect(f'http://localhost:3000/Main/{access_token}')
+        # return redirect(f'http://localhost:3000/Main/{access_token}')
+        return redirect(f'http://192.168.99.100:3000/Main/{access_token}')
+
 
     else:
         user = userinfo(username = username, access_token = access_token)
@@ -115,7 +119,8 @@ def get_saved_posts(access_token):
 
     # return redirect(url_for('add_email', username=username))
     # return redirect(url_for('homepage',access_token = access_token)) 
-    return redirect(f'http://localhost:3000/Main/{access_token}')
+    # return redirect(f'http://localhost:3000/Main/{access_token}')
+    return redirect(f'http://192.168.99.100:3000/Main/{access_token}')
 
 
 # @app.route('/add_email/<username>', methods = ['GET','POST'])
