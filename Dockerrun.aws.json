@@ -1,0 +1,55 @@
+{
+    "containerDefinitions": [
+        {
+            "essential": true,
+            "image": "backend",
+            "memory": 300,
+            "mountPoints": [
+                {
+                    "containerPath": "/usr/src/app",
+                    "sourceVolume": "_Backend"
+                }
+            ],
+            "name": "backend",
+            "portMappings": [
+                {
+                    "containerPort": 65010,
+                    "hostPort": 65010
+                }
+            ]
+        },
+        {
+            "essential": true,
+            "image": "client",
+            "memory": 300,
+            "mountPoints": [
+                {
+                    "containerPath": "/user/src/app",
+                    "sourceVolume": "_Client"
+                }
+            ],
+            "name": "client",
+            "portMappings": [
+                {
+                    "containerPort": 3000,
+                    "hostPort": 3000
+                }
+            ]
+        }
+    ],
+    "family": "",
+    "volumes": [
+        {
+            "host": {
+                "sourcePath": "./backend"
+            },
+            "name": "_Backend"
+        },
+        {
+            "host": {
+                "sourcePath": "./client"
+            },
+            "name": "_Client"
+        }
+    ]
+}

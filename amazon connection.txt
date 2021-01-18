@@ -8,3 +8,20 @@ Master password
 Nani1125?!Copy
 Endpoint
 redditsavedinstance.czbffs62tgvp.us-east-2.rds.amazonaws.comCopy
+
+
+CANT CONNECT?
+https://stackoverflow.com/questions/37212945/aws-cant-connect-to-rds-database-from-my-machine
+
+
+docker-compose to aws 
+https://container-transform.readthedocs.io/en/latest/index.html
+
+
+reddit call-back
+https://www.reddit.com/prefs/apps/
+
+
+MIGHT NEED TO CHANGE HEALTH STATUS TO 302 Mate 
+load balanmcing -> target groups -> health check settings edit -> ...
+https://us-east-2.console.aws.amazon.com/ec2/v2/home?region=us-east-2#TargetGroup:targetGroupArn=arn:aws:elasticloadbalancing:us-east-2:030942281737:targetgroup/awseb-AWSEB-10CI5TCLMS9RU/97127731a6fac481

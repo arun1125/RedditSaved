@@ -10,6 +10,8 @@ services:
     ports:
       - 65010:65010
 
+    mem_limit: 300m
+
 
   client:
     build: /client
@@ -19,6 +21,9 @@ services:
 
     ports:
       - 3000:3000
+
+    mem_limit: 300m
+    envior
 
 
 
