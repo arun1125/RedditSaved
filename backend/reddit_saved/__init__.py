@@ -4,6 +4,8 @@ import psycopg2
 from flask_cors import CORS
 import os
 from flask_migrate import Migrate
+from dotenv import load_dotenv
+load_dotenv()
 
 
 app = Flask(__name__)

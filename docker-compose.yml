@@ -1,6 +1,15 @@
 version: '3.8'
-
 services:
+
+  nginx:
+    build:
+      dockerfile: Dockerfile
+      context: ./nginx
+    ports:
+      - "80:80"
+      #localhost 80 to continer 80
+
+
   backend:
     build: ./backend
     image: backend
@@ -9,8 +18,11 @@ services:
 
     ports:
       - 65010:65010
+    container_name: backend
 
     mem_limit: 300m
+    env_file:
+      - ./backend/.env
 
 
   client:
@@ -19,11 +31,12 @@ services:
     volumes:
       - ./client:/user/src/app
 
-    ports:
-      - 3000:3000
+    # ports:
+    #   - 3000:3000
+    container_name: client
 
     mem_limit: 300m
-    envior
+    
 
 
 

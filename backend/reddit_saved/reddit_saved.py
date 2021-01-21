@@ -4,8 +4,11 @@ import random
 from uuid import uuid4
 from reddit_saved.models import userinfo, savedposts
 import os
+from dotenv import load_dotenv
+load_dotenv()
 
 'https://github.com/reddit-archive/reddit/wiki/OAuth2-Python-Example'
+'https://www.12factor.net/'
 #code flow is the auth I think I want and the redirect URI 
 #If you are running a website you will want to enter the appropriate callback
 # URL and configure that endpoint to complete the code flow.
@@ -14,8 +17,8 @@ import os
 
 class reddit_saved:
     def __init__(self, refresh_token = None):
-        self.app_secret = 'XMJljCPdnA21Go0aolRedD4o7HIbSw'
-        self.app_id = 'MPmqNHM5wTbnzA'
+        self.app_secret = os.environ.get('REDDIT_SECRET')
+        self.app_id = os.environ.get('REDDIT_ID')
         self.app_agent = ("reddit-saved-web-app 1.0 by /u/arun1995plus1")
         self.REDIRECT_URI = "http://127.0.0.1:65010/reddit_callback"
         self.refresh_token = refresh_token
