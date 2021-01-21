@@ -14,12 +14,13 @@ app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
 
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('SQLALCHEMY_DATABASE_URI')
 # app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql+psycopg2://reddit_saved:Nani1125?!@redditsavedinstance.czbffs62tgvp.us-east-2.rds.amazonaws.com:5432/redditsaved'
+# app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql+psycopg2://reddit_saved:Nani1125?!@redditsavedinstance.czbffs62tgvp.us-east-2.rds.amazonaws.com:5432/redditsaved'
 # app.config['SQLALCHEMY_BINDS'] = {'other_schema': 'redditsaved'}
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
-db.init_app(app) 
-migrate = Migrate(app ,db)
+# db.init_app(app) 
+# migrate = Migrate(app ,db)
 
 # migrate.init_app(app, db) 
 # db.init_app(app)
