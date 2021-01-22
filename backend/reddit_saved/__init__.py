@@ -3,7 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 import psycopg2
 from flask_cors import CORS
 import os
-from flask_migrate import Migrate
+# from flask_migrate import Migrate
 from dotenv import load_dotenv
 load_dotenv()
 
@@ -14,9 +14,11 @@ app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
 # app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
 # app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://reddit_saved:Nani1125?!@redditsavedinstance.czbffs62tgvp.us-east-2.rds.amazonaws.com/reddit_saved"
 
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('SQLALCHEMY_DATABASE_URI')
-# app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql+psycopg2://reddit_saved:Nani1125?!@redditsavedinstance.czbffs62tgvp.us-east-2.rds.amazonaws.com:5432/redditsaved'
-# app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql+psycopg2://reddit_saved:Nani1125?!@redditsavedinstance.czbffs62tgvp.us-east-2.rds.amazonaws.com:5432/redditsaved'
+# app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('SQLALCHEMY_DATABASE_URI')
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql+psycopg2://reddit_saved:Nani1125?!@redditsavedinstance.czbffs62tgvp.us-east-2.rds.amazonaws.com:5432/redditsaved'
+
+
+
 # app.config['SQLALCHEMY_BINDS'] = {'other_schema': 'redditsaved'}
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 

@@ -30,6 +30,7 @@ services:
     image: client
     volumes:
       - ./client:/user/src/app
+      # - /app/node_modules
 
     # ports:
     #   - 3000:3000
