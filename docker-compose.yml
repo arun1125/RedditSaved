@@ -2,11 +2,16 @@ version: '3.8'
 services:
 
   nginx:
+    image: nginx
+    depends_on:
+      - client
+    restart: always
     build:
       dockerfile: Dockerfile
       context: ./nginx
     ports:
       - "80:80"
+    mem_limit: 300m
       #localhost 80 to continer 80
 
 
