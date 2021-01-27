@@ -4,7 +4,7 @@ from reddit_saved.models import userinfo, savedposts
 from uuid import uuid4
 from flask_restful import reqparse
 from flask import url_for, redirect, render_template, request, session, make_response
-'https://github.com/crista/exercises-in-programming-style'
+
 
 
 

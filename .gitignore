@@ -7,3 +7,4 @@
 ./old_requirements.txt
 RedditSaved.zip
 ./RedditSaved.zip
+./backend/reddit_saved/__pycache__

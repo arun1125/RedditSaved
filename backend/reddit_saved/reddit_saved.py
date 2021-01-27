@@ -12,15 +12,14 @@ load_dotenv()
 #code flow is the auth I think I want and the redirect URI 
 #If you are running a website you will want to enter the appropriate callback
 # URL and configure that endpoint to complete the code flow.
-# session['CLIENT_ID'] = 'MPmqNHM5wTbnzA'
 # session['CLIENT_SECRET'] = ''
 
 class reddit_saved:
     def __init__(self, refresh_token = None):
-        # self.app_secret = os.environ.get('REDDIT_SECRET')
-        self.app_secret = 'XMJljCPdnA21Go0aolRedD4o7HIbSw'
-        # self.app_id = os.environ.get('REDDIT_ID')
-        self.app_id = 'MPmqNHM5wTbnzA'
+        self.app_secret = os.environ.get('REDDIT_SECRET')
+
+        self.app_id = os.environ.get('REDDIT_ID')
+
         self.app_agent = ("reddit-saved-web-app 1.0 by /u/arun1995plus1")
         self.REDIRECT_URI = "http://127.0.0.1:65010/reddit_callback"
         self.refresh_token = refresh_token

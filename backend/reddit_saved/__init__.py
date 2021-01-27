@@ -15,7 +15,7 @@ app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
 # app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://reddit_saved:Nani1125?!@redditsavedinstance.czbffs62tgvp.us-east-2.rds.amazonaws.com/reddit_saved"
 
 # app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('SQLALCHEMY_DATABASE_URI')
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql+psycopg2://reddit_saved:Nani1125?!@redditsavedinstance.czbffs62tgvp.us-east-2.rds.amazonaws.com:5432/redditsaved'
+# app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql+psycopg2://reddit_saved:Nani1125?!@redditsavedinstance.czbffs62tgvp.us-east-2.rds.amazonaws.com:5432/redditsaved'
 
 
 
