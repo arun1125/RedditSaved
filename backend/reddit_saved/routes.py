@@ -9,6 +9,7 @@ from flask import url_for, redirect, render_template, request, session, make_res
 
 
 @app.route('/')
+# @api.route('/api/')
 def home():
     access_token = request.args.get('access_token', default = "None", type = int)
 
